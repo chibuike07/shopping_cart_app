@@ -14,25 +14,25 @@ const Dashboard = () => {
 
   const handleGirldWears = () => {
     const { girls } = Categories;
-    let res = girls.products;
+    let res = girls.products.filter(({ id }) => id <= 3);
     setGirlsWears(res);
   };
   const handleBoysWears = () => {
     const { boys } = Categories;
-    let res = boys.products;
+    let res = boys.products.filter(({ id }) => id <= 3);
     setBoysWears(res);
   };
   const handleLadiesWear = () => {
     const { ladies } = Categories;
-    let res = ladies.products;
+    let res = ladies.products.filter(({ id }) => id <= 3);
     setLadiesWears(res);
-    console.log(res);
+    // console.log(res);
   };
   const handleMensWear = () => {
     const { men } = Categories;
-    let res = men.products;
+    let res = men.products.filter(({ id }) => id <= 3);
     setMenWears(res);
-    console.log(res);
+    // console.log(res);
   };
   useEffect(() => {
     handleGirldWears();
