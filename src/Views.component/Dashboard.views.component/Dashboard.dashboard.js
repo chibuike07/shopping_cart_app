@@ -8,15 +8,37 @@ import { Categories } from "../../Collection.component/Categories.carts";
 import Image from "../../Components/Image/Image.component";
 const Dashboard = () => {
   const [girls_wears, setGirlsWears] = useState([]);
-  // console.log(girls.products);
+  const [boys_wears, setBoysWears] = useState([]);
+  const [ladies_wears, setLadiesWears] = useState([]);
+  const [men_wears, setMenWears] = useState([]);
+
   const handleGirldWears = () => {
     const { girls } = Categories;
     let res = girls.products;
     setGirlsWears(res);
-    // console.log(res);
+  };
+  const handleBoysWears = () => {
+    const { boys } = Categories;
+    let res = boys.products;
+    setBoysWears(res);
+  };
+  const handleLadiesWear = () => {
+    const { ladies } = Categories;
+    let res = ladies.products;
+    setLadiesWears(res);
+    console.log(res);
+  };
+  const handleMensWear = () => {
+    const { men } = Categories;
+    let res = men.products;
+    setMenWears(res);
+    console.log(res);
   };
   useEffect(() => {
     handleGirldWears();
+    handleBoysWears();
+    handleLadiesWear();
+    handleMensWear();
   }, []);
   return (
     <div className={styles.dashboard}>
@@ -32,11 +54,11 @@ const Dashboard = () => {
             <div className={styles.dashboard_logo}>
               <img
                 src="https://res.cloudinary.com/hobbyluv07/image/upload/v1568425126/logo_eeviwg.jpg"
-                alt="logo view  "
+                alt="logo view "
               />
             </div>
             <div className={styles.add_product}>
-              <Links url={"/"} text={"add product"} />
+              <Links url={"/"} text={"add product"} color={"blue"} />
             </div>
             <div className={styles.product_search_form}>
               <form className={styles.form}>
@@ -46,9 +68,8 @@ const Dashboard = () => {
                   placeholder={"search"}
                   isRequired={true}
                   className={styles.input}
-                  // value={''}
                 />
-                <Button text={"search"} backgroundColor={"inherit"} />
+                <Button text={"search"} backgroundColor={"#9c5518"} />
               </form>
             </div>
 
@@ -58,17 +79,88 @@ const Dashboard = () => {
           </div>
           <div className={styles.girls}>
             <div className={styles.Categories_names}>
-              <h3>girls wears</h3>
+              <h3>Girls wears</h3>
             </div>
             <div className={styles.girl_sample_product}>
-              {girls_wears.map(products => (
-                <Image
-                  src={products.image}
-                  alt={products.image}
-                  key={products.id}
-                  className={styles.custom_image}
-                />
-              ))}
+              {girls_wears.map(({ image, id, amount, name }) => {
+                return (
+                  <div className={styles.show_case_wrapper} key={id}>
+                    <Image
+                      src={image}
+                      alt={image}
+                      className={styles.custom_image}
+                    />
+                    <span className={styles.product_details}>{amount}</span>
+                    <br />
+                    <span className={styles.product_details}>{name}</span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+          <div className={styles.boys}>
+            <div className={styles.Categories_names}>
+              <h3>Boys wears</h3>
+            </div>
+            <div className={styles.boys_sample_product}>
+              {boys_wears.map(({ image, id, amount, name }) => {
+                return (
+                  <div className={styles.show_case_wrapper} key={id}>
+                    <Image
+                      src={image}
+                      alt={image}
+                      className={styles.custom_image}
+                    />
+                    <span className={styles.product_details}>{amount}</span>
+                    <br />
+                    <span className={styles.product_details}>{name}</span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          <div className={styles.ladies}>
+            <div className={styles.Categories_names}>
+              <h3>ladies wears</h3>
+            </div>
+            <div className={styles.ladies_sample_product}>
+              {ladies_wears.map(({ image, id, amount, name }) => {
+                return (
+                  <div className={styles.show_case_wrapper} key={id}>
+                    <Image
+                      src={image}
+                      alt={image}
+                      className={styles.custom_image}
+                    />
+                    <span className={styles.product_details}>{amount}</span>
+                    <br />
+                    <span className={styles.product_details}>{name}</span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          <div className={styles.men}>
+            <div className={styles.Categories_names}>
+              <h3>men wears</h3>
+            </div>
+            <div className={styles.men_sample_product}>
+              {men_wears.map(({ image, id, amount, name }) => {
+                return (
+                  <div className={styles.show_case_wrapper} key={id}>
+                    <Image
+                      src={image}
+                      alt={image}
+                      className={styles.custom_image}
+                    />
+                    <span className={styles.product_details}>{amount}</span>
+                    <br />
+                    <span className={styles.product_details}>{name}</span>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>

@@ -34,14 +34,16 @@ export const Categories = {
         amount: "$" + 5000,
         image:
           "https://res.cloudinary.com/hobbyluv07/image/upload/v1568417052/Mens_Boat_Shoes._CB442712240__c9bu6u.jpg"
-      }
-    ]
-  },
-  men: {
-    id: 3,
-    products: [
+      },
       {
-        id: 1,
+        id: 2,
+        name: "hills-shoes",
+        amount: "$" + 3000,
+        image:
+          "https://res.cloudinary.com/hobbyluv07/image/upload/v1568416986/81V4ktn_z_L._Ac_SX255__hxdsxt.jpg"
+      },
+      {
+        id: 3,
         name: "hills-shoes",
         amount: "$" + 3000,
         image:
@@ -49,9 +51,8 @@ export const Categories = {
       }
     ]
   },
-
   boys: {
-    id: 4,
+    id: 3,
     products: [
       {
         id: 1,
@@ -59,6 +60,46 @@ export const Categories = {
         amount: "$" + 2000,
         image:
           "https://res.cloudinary.com/hobbyluv07/image/upload/v1568417052/Mens_Boat_Shoes._CB442712240__c9bu6u.jpg"
+      },
+      {
+        id: 2,
+        name: "flat-cruros",
+        amount: "$" + 2000,
+        image:
+          "https://res.cloudinary.com/hobbyluv07/image/upload/v1568417052/Mens_Boat_Shoes._CB442712240__c9bu6u.jpg"
+      },
+      {
+        id: 3,
+        name: "flat-cruros",
+        amount: "$" + 2000,
+        image:
+          "https://res.cloudinary.com/hobbyluv07/image/upload/v1568417052/Mens_Boat_Shoes._CB442712240__c9bu6u.jpg"
+      }
+    ]
+  },
+  men: {
+    id: 4,
+    products: [
+      {
+        id: 1,
+        name: "hills-shoes",
+        amount: "$" + 3000,
+        image:
+          "https://res.cloudinary.com/hobbyluv07/image/upload/v1568416986/81V4ktn_z_L._Ac_SX255__hxdsxt.jpg"
+      },
+      {
+        id: 2,
+        name: "hills-shoes",
+        amount: "$" + 3000,
+        image:
+          "https://res.cloudinary.com/hobbyluv07/image/upload/v1568416986/81V4ktn_z_L._Ac_SX255__hxdsxt.jpg"
+      },
+      {
+        id: 3,
+        name: "hills-shoes",
+        amount: "$" + 3000,
+        image:
+          "https://res.cloudinary.com/hobbyluv07/image/upload/v1568416986/81V4ktn_z_L._Ac_SX255__hxdsxt.jpg"
       }
     ]
   }

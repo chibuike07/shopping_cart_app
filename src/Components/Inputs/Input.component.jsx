@@ -7,9 +7,11 @@ const Input = ({
   value,
   isRequired,
   type,
-  className
+  className,
+  outLine
 }) => (
   <input
+    style={{ outline: outLine ? outLine : "none" }}
     type={type ? type : "text"}
     placeholder={placeholder}
     onChange={onChange}
