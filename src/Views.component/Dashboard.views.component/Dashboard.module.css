@@ -26,6 +26,7 @@
   justify-content: space-around;
   align-items: center;
   margin-top: 10%;
+  /* position: fixed; */
 }
 
 .form {
@@ -46,6 +47,7 @@
   align-items: center;
   color: goldenrod;
   animation: blink 3s infinite;
+  background-attachment: fixed;
 }
 @keyframes blink {
   from {
@@ -55,7 +57,7 @@
     color: #fafafa;
   }
   30% {
-    opacity: 0.3;
+    opacity: 0.8;
   }
 }
 .product_details {

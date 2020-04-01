@@ -8,10 +8,23 @@ const Input = ({
   isRequired,
   type,
   className,
-  outLine
+  outLine,
+  id,
+  paddingLeft,
+  border,
+  borderRadius,
+  width,
+  height
 }) => (
   <input
-    style={{ outline: outLine ? outLine : "none" }}
+    style={{
+      outline: outLine ? outLine : "none",
+      paddingLeft: paddingLeft ? paddingLeft : null,
+      width: width ? width : null,
+      border: border ? border : null,
+      borderRadius: borderRadius ? borderRadius : null,
+      height: height ? height : null
+    }}
     type={type ? type : "text"}
     placeholder={placeholder}
     onChange={onChange}
@@ -19,6 +32,7 @@ const Input = ({
     className={className ? className : "custom-input"}
     name={name}
     required={isRequired}
+    id={id ? id : null}
   />
 );
 export default Input;

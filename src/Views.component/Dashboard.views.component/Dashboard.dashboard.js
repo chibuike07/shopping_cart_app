@@ -26,13 +26,11 @@ const Dashboard = () => {
     const { ladies } = Categories;
     let res = ladies.products.filter(({ id }) => id <= 3);
     setLadiesWears(res);
-    // console.log(res);
   };
   const handleMensWear = () => {
     const { men } = Categories;
     let res = men.products.filter(({ id }) => id <= 3);
     setMenWears(res);
-    // console.log(res);
   };
   useEffect(() => {
     handleGirldWears();

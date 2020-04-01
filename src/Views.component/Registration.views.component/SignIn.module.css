@@ -1,0 +1,43 @@
+* {
+  padding: 0%;
+  margin: 0%;
+  box-sizing: border-box;
+}
+.signInWrapper {
+  width: 100%;
+  height: 100vh;
+}
+.background_container {
+  width: inherit;
+  height: inherit;
+  background: repeating-linear-gradient(
+      to left bottom,
+      rgba(156, 85, 24, 0.3),
+      rgba(239, 148, 45, 0.3)
+    ),
+    url("../../Asset.component/bg-cart-img.jpeg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-content: center;
+}
+
+.heading {
+  text-transform: uppercase;
+  padding-top: 20px;
+  color: #ef942d;
+  margin-bottom: 5%;
+}
+.hint {
+  color: #fff;
+  padding-top: 30px;
+}
+
+.registerWrapper {
+  display: grid;
+  grid-gap: 15px;
+  padding-top: 15px;
+}

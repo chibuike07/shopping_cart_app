@@ -11,18 +11,27 @@ const Button = ({
   text,
   handleSubmit,
   className,
-
-  ...otherButtonProps
+  width,
+  outline,
+  margin,
+  padding,
+  border,
+  borderRadius
 }) => (
   <div className="button">
     <button
       style={{
         backgroundColor: backgroundColor ? backgroundColor : "red",
-        color: color ? color : "#fff"
+        color: color ? color : "#fff",
+        width: width ? width : null,
+        outline: outline ? outline : null,
+        margin: margin ? margin : null,
+        padding: padding ? padding : null,
+        border: border ? border : null,
+        borderRadius: borderRadius ? borderRadius : null
       }}
       onClick={() => (click ? click : null)}
       onSubmit={() => (handleSubmit ? handleSubmit : null)}
-      {...(otherButtonProps ? { ...otherButtonProps } : null)}
       className={className ? className : button}
     >
       {text ? text : "click"}
