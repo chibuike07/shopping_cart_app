@@ -11,7 +11,11 @@ const Dashboard = () => {
   const [boys_wears, setBoysWears] = useState([]);
   const [ladies_wears, setLadiesWears] = useState([]);
   const [men_wears, setMenWears] = useState([]);
-
+  const [loginUserData, setLoginUserData] = useState([]);
+  const [searchInput, setInput] = useState([]);
+  const handleChange = ({ target }) => {
+    setInput({ [target.name]: target.value });
+  };
   const handleGirldWears = () => {
     const { girls } = Categories;
     let res = girls.products.filter(({ id }) => id <= 3);
@@ -32,16 +36,22 @@ const Dashboard = () => {
     let res = men.products.filter(({ id }) => id <= 3);
     setMenWears(res);
   };
+  const handleLoginUser = () => {
+    const storage = JSON.parse(sessionStorage.getItem("userObject"));
+    setLoginUserData([storage]);
+  };
+  console.log(loginUserData);
   useEffect(() => {
     handleGirldWears();
     handleBoysWears();
     handleLadiesWear();
     handleMensWear();
+    handleLoginUser();
   }, []);
   return (
     <div className={styles.dashboard}>
       <div className={styles.dashboard_container}>
-        <SideBar />
+        <SideBar loginUser={loginUserData} />
         <div className={styles.aside_container}>
           <div className={styles.headings}>
             <h2>welcome to the internet of body wears</h2>
@@ -62,10 +72,12 @@ const Dashboard = () => {
               <form className={styles.form}>
                 <Input
                   type={"search"}
-                  name={"search-products"}
+                  name={"search_products"}
                   placeholder={"search"}
                   isRequired={true}
                   className={styles.input}
+                  value={searchInput.search_products}
+                  onChange={handleChange}
                 />
                 <Button text={"search"} backgroundColor={"#9c5518"} />
               </form>

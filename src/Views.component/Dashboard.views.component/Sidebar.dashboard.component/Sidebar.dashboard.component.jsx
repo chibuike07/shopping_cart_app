@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
-import Logo from "../../../Asset.component/bgFoto.jpg";
 import SidebarStyles from "./Sidebar.module.css";
 import { optionArray } from "../../../Collection.component/Side_bar_options_array";
 import Lists from "../../../Components/Lists/List.component";
 import Links from "../../../Components/Links/Link.component";
-const SideBar = () => {
+import Image from "../../../Components/Image/Image.component";
+//function for the side bar
+const SideBar = ({ loginUser }) => {
+  //destructuring props
   const {
+    // destructuring styles
     option,
     option_container,
     image,
@@ -14,24 +17,41 @@ const SideBar = () => {
     option_list,
     list
   } = SidebarStyles;
-  const [options, setOptions] = useState([]);
+  const [options, setOptions] = useState([]); //destructuring state and set state from useState for side bar options
+  const [loginUserdata, setLoginUserData] = useState([]);
+
+  //function to handle the side bar options
   const handleOptions = () => {
     setOptions(optionArray);
   };
+  // function to handle the login user data
+  const logger = () => {
+    setLoginUserData(loginUser);
+  };
   useEffect(() => {
+    //setting the components to load the options array to the side bar and fetch the user data from the session storage on componentdidmount
     handleOptions();
-  }, []);
+    logger();
+  });
 
-  console.log(options);
   return (
     <div className={option}>
       <div className={option_container}>
         <div className={image}>
-          <img src={Logo} alt="display_pix" />
+          {loginUserdata.map(({ img }, i) => (
+            <Image src={img} alt={"user image"} key={i} />
+          ))}
         </div>
         <div className={user_identity}>
-          <p>username</p>
-          <address>email</address>
+          {loginUserdata.map(({ username, email }, index) => (
+            <div key={index} style={{ color: "#fff" }}>
+              <p>{username[0].toUpperCase() + username.slice(1)}</p>
+              <br />
+              <address>
+                <abbr title={email}>My Email Address</abbr>
+              </address>
+            </div>
+          ))}
         </div>
         <div className={dropDown}>
           <ul className={option_list}>

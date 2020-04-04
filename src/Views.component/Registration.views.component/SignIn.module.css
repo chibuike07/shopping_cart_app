@@ -10,10 +10,9 @@
 .background_container {
   width: inherit;
   height: inherit;
-  background: repeating-linear-gradient(
-      to left bottom,
-      rgba(156, 85, 24, 0.3),
-      rgba(239, 148, 45, 0.3)
+  background: repeating-radial-gradient(
+      /* to left bottom, */ rgba(156, 85, 24, 0.3),
+      rgba(239, 148, 45, 0)
     ),
     url("../../Asset.component/bg-cart-img.jpeg");
   background-size: contain;
@@ -23,6 +22,7 @@
   justify-content: center;
   flex-direction: column;
   align-content: center;
+  background-color: #ef942d;
 }
 
 .heading {
@@ -34,6 +34,8 @@
 .hint {
   color: #fff;
   padding-top: 30px;
+  font-size: larger;
+  font-weight: bolder;
 }
 
 .registerWrapper {

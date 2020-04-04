@@ -14,7 +14,13 @@ const Input = ({
   border,
   borderRadius,
   width,
-  height
+  height,
+  borderTop,
+  borderBottom,
+  backgroundColor,
+  color,
+  opacity
+  // ref
 }) => (
   <input
     style={{
@@ -23,16 +29,22 @@ const Input = ({
       width: width ? width : null,
       border: border ? border : null,
       borderRadius: borderRadius ? borderRadius : null,
-      height: height ? height : null
+      borderTop: borderTop ? borderTop : null,
+      borderBottom: borderBottom ? borderBottom : null,
+      height: height ? height : null,
+      color: color ? color : null,
+      backgroundColor: backgroundColor ? backgroundColor : null,
+      opacity: opacity ? opacity : null
     }}
     type={type ? type : "text"}
     placeholder={placeholder}
     onChange={onChange}
-    value={value}
+    value={value ? value : ""}
     className={className ? className : "custom-input"}
     name={name}
     required={isRequired}
     id={id ? id : null}
+    // ref={ref ? ref : null}
   />
 );
 export default Input;

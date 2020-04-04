@@ -6,5 +6,6 @@ export const optionArray = [
   "following",
   "reports",
   "analysis",
-  "setting"
+  "setting",
+  "notifications"
 ];

@@ -27,7 +27,7 @@ const SignInReg = () => {
                 text={"LOGIN"}
                 border={"2px solid #ef942d"}
                 padding={"7px"}
-                width={"200px"}
+                width={"30vw"}
                 margin={"auto"}
                 borderRadius={"20px"}
                 color={"#fff"}
@@ -37,7 +37,7 @@ const SignInReg = () => {
                 text={"SIGNUP"}
                 border={"2px solid #ef942d"}
                 padding={"7px"}
-                width={"200px"}
+                width={"30vw"}
                 margin={"auto"}
                 borderRadius={"20px"}
                 backgroundColor={"#ef942d"}
