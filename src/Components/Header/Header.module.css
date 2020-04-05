@@ -1,0 +1,35 @@
+.header_wrapper {
+  width: 100%;
+  height: 10vh;
+  margin-bottom: 20px;
+}
+.header_container {
+  width: inherit;
+  height: inherit;
+  background-color: #9c5518;
+  display: flex;
+  align-items: center;
+}
+.nav_wrapper {
+  width: 60%;
+  height: inherit;
+  display: flex;
+  align-items: center;
+  margin-left: 10%;
+}
+.nav_wrapper a {
+  margin-right: 4%;
+  padding: 0px 10px 0px 10px;
+}
+.calender {
+  padding: 10px;
+  border: 2px solid #fff;
+}
+.cart {
+  padding: 10px;
+  border: 2px solid #fff;
+  border-left: 0;
+}
+.user_image {
+  flex-basis: 300px;
+}

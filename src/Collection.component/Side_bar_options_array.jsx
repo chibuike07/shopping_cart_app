@@ -1,8 +1,7 @@
 export const optionArray = [
   "upgrad",
   "dash board,",
-  "cart",
-  "follower",
+  "followers",
   "following",
   "reports",
   "analysis",

@@ -9,8 +9,9 @@ import Image from "../../Components/Image/Image.component";
 const Dashboard = () => {
   const [girls_wears, setGirlsWears] = useState([]);
   const [boys_wears, setBoysWears] = useState([]);
-  const [ladies_wears, setLadiesWears] = useState([]);
-  const [men_wears, setMenWears] = useState([]);
+  const [week_day, setWeekDay] = useState([]);
+  // const [ladies_wears, setLadiesWears] = useState([]);
+  // const [men_wears, setMenWears] = useState([]);
   const [loginUserData, setLoginUserData] = useState([]);
   const [searchInput, setInput] = useState([]);
   const handleChange = ({ target }) => {
@@ -27,18 +28,47 @@ const Dashboard = () => {
     setBoysWears(res);
   };
   const handleLadiesWear = () => {
-    const { ladies } = Categories;
-    let res = ladies.products.filter(({ id }) => id <= 3);
-    setLadiesWears(res);
+    // const { ladies } = Categories;
+    // let res = ladies.products.filter(({ id }) => id <= 3);
+    // setLadiesWears(res);
   };
   const handleMensWear = () => {
-    const { men } = Categories;
-    let res = men.products.filter(({ id }) => id <= 3);
-    setMenWears(res);
+    // const { men } = Categories;
+    // let res = men.products.filter(({ id }) => id <= 3);
+    // setMenWears(res);
   };
   const handleLoginUser = () => {
     const storage = JSON.parse(sessionStorage.getItem("userObject"));
     setLoginUserData([storage]);
+  };
+  const handleWeekDay = () => {
+    let day = new Date().getDay();
+    switch (day) {
+      case 0:
+        setWeekDay("sunday");
+        break;
+      case 1:
+        setWeekDay("monday");
+        break;
+      case 2:
+        setWeekDay("tuesday");
+        break;
+      case 3:
+        setWeekDay("wednesday");
+        break;
+      case 4:
+        setWeekDay("thursday");
+        break;
+      case 5:
+        setWeekDay("friday");
+        break;
+      case 6:
+        setWeekDay("saturday");
+        break;
+      default:
+        setWeekDay("you re on the way to the exile");
+        break;
+    }
   };
   console.log(loginUserData);
   useEffect(() => {
@@ -47,17 +77,13 @@ const Dashboard = () => {
     handleLadiesWear();
     handleMensWear();
     handleLoginUser();
+    handleWeekDay();
   }, []);
   return (
     <div className={styles.dashboard}>
       <div className={styles.dashboard_container}>
         <SideBar loginUser={loginUserData} />
         <div className={styles.aside_container}>
-          <div className={styles.headings}>
-            <h2>welcome to the internet of body wears</h2>
-            <p>have enough to get and share with friends </p>
-            <p>how re u doing</p>
-          </div>
           <div className={styles.top_area}>
             <div className={styles.dashboard_logo}>
               <img
@@ -84,7 +110,7 @@ const Dashboard = () => {
             </div>
 
             <div className={styles.week_day}>
-              <span>week_day</span>
+              <span>{week_day}</span>
             </div>
           </div>
           <div className={styles.girls}>
@@ -130,7 +156,7 @@ const Dashboard = () => {
             </div>
           </div>
 
-          <div className={styles.ladies}>
+          {/* <div className={styles.ladies}>
             <div className={styles.Categories_names}>
               <h3>ladies wears</h3>
             </div>
@@ -172,7 +198,7 @@ const Dashboard = () => {
                 );
               })}
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
