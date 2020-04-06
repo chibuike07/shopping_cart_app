@@ -4,23 +4,29 @@ import Links from "../Links/Link.component";
 import calenderIcon from "../../Asset.component/time.svg";
 import Image from "../Image/Image.component";
 import CartIcon from "../../Asset.component/plus-cart.png";
-const Header = () => {
+import Button from "../Button/Button.component";
+const Header = ({ history }) => {
   const {
     header_wrapper,
     nav_wrapper,
     header_container,
     calender,
     cart,
-    user_image
+    user_image,
+    signin_toggle
   } = headerStyles;
   const [userImage, setUserImage] = useState([]);
-
+  const [signOut, setSignOut] = useState("logout");
   const LoggerImg = () => {
     const storage = JSON.parse(sessionStorage.getItem("userObject"));
     if (storage) {
       let res = storage.img;
       setUserImage(res);
     }
+  };
+  const handleSignOut = () => {
+    sessionStorage.removeItem("userObject");
+    window.location.replace("/");
   };
   useEffect(() => {
     LoggerImg();
@@ -42,7 +48,6 @@ const Header = () => {
             alt={"calender icon"}
             width={"40px"}
             height={"30px"}
-            // padding={"10px"}
           />
         </div>
         <div className={cart}>
@@ -51,7 +56,6 @@ const Header = () => {
             alt={"cart image"}
             width={"40px"}
             height={"30px"}
-            // padding={"10px"}
           />
         </div>
         <div className={user_image}>
@@ -61,6 +65,13 @@ const Header = () => {
             width={"50px"}
             height={"50px"}
             padding={"5px 0 0 0"}
+          />
+        </div>
+        <div className={signin_toggle}>
+          <Button
+            click={handleSignOut}
+            text={signOut}
+            backgroundColor={"inherit"}
           />
         </div>
       </div>

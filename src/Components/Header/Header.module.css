@@ -21,6 +21,10 @@
   margin-right: 4%;
   padding: 0px 10px 0px 10px;
 }
+.nav_wrapper a:hover {
+  border-bottom: 2px solid #fff;
+  padding-bottom: 2px;
+}
 .calender {
   padding: 10px;
   border: 2px solid #fff;
@@ -32,4 +36,19 @@
 }
 .user_image {
   flex-basis: 300px;
+}
+.signin_toggle {
+  margin-right: 5%;
+  padding: 0 5px 0 5px;
+}
+.signin_toggle button:hover {
+  animation: animate 2s infinite;
+}
+@keyframes animate {
+  from {
+    background-color: #fff;
+  }
+  to {
+    background-color: #9c5518;
+  }
 }

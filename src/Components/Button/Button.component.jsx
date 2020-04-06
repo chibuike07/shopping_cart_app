@@ -30,8 +30,8 @@ const Button = ({
         border: border ? border : null,
         borderRadius: borderRadius ? borderRadius : null
       }}
-      onClick={() => (click ? click : null)}
-      onSubmit={() => (handleSubmit ? handleSubmit : null)}
+      onClick={click ? click : null}
+      onSubmit={handleSubmit ? handleSubmit : null}
       className={className ? className : button}
     >
       {text ? text : "click"}
