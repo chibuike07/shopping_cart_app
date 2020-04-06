@@ -3,17 +3,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Dashboard from "../../Views.component/Dashboard.views.component/Dashboard.dashboard";
 import Header from "../../Components/Header/Header.components";
 import ProductDisplay from "../../Views.component/Products.display.views.component/products.product.display";
-const PageForLoggedUsers = ({ history }) => {
-  const componentsArray = [
-    {
-      path: "/dashboard",
-      component: Dashboard
-    },
-    {
-      path: "/categories",
-      component: ProductDisplay
-    }
-  ];
+const PageForLoggedUsers = () => {
   return (
     <BrowserRouter>
       <Header />
@@ -23,7 +13,7 @@ const PageForLoggedUsers = ({ history }) => {
           <Route exact path="/categories" component={ProductDisplay} />
         </Switch>
       ) : (
-        history.push("/")
+        window.location.replace("/")
       )}
     </BrowserRouter>
   );
