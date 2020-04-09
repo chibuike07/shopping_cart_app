@@ -1,6 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
-const Links = ({
+import { NavLink } from "react-router-dom";
+const NavLinks = ({
   url,
   width,
   height,
@@ -13,13 +13,11 @@ const Links = ({
   borderRadius,
   padding,
   backgroundColor,
-  margin,
-  click
+  margin
 }) => (
-  <Link
+  <NavLink
     to={url}
     className={className}
-    onClick={click ? click : null}
     style={{
       textDecoration: textDecoration ? textDecoration : "none",
       color: color ? color : "#fff",
@@ -34,7 +32,7 @@ const Links = ({
     }}
   >
     {text ? text : "am here to navigate"}
-  </Link>
+  </NavLink>
 );
 
-export default Links;
+export default NavLinks;

@@ -4,8 +4,9 @@ import { optionArray } from "../../../Collection.component/Side_bar_options_arra
 import Lists from "../../../Components/Lists/List.component";
 import Links from "../../../Components/Links/Link.component";
 import Image from "../../../Components/Image/Image.component";
+
 //function for the side bar
-const SideBar = ({ loginUser }) => {
+const SideBar = ({ loginUser }, data) => {
   //destructuring props
   const {
     // destructuring styles
@@ -28,12 +29,15 @@ const SideBar = ({ loginUser }) => {
   const logger = () => {
     setLoginUserData(loginUser);
   };
+
   useEffect(() => {
     //setting the components to load the options array to the side bar and fetch the user data from the session storage on componentdidmount
     handleOptions();
     logger();
   });
-
+  const handleOptionClick = ({ target }) => {
+    console.log(target.text);
+  };
   return (
     <div className={option}>
       <div className={option_container}>
@@ -59,7 +63,12 @@ const SideBar = ({ loginUser }) => {
               <Lists
                 key={index}
                 text={
-                  <Links url={"/"} text={option} textTransform={"capitalize"} />
+                  <Links
+                    url={"/dashboard"}
+                    text={option}
+                    textTransform={"capitalize"}
+                    click={handleOptionClick}
+                  />
                 }
                 marginTop={"13px"}
                 className={list}

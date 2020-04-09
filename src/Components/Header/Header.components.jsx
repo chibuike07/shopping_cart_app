@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import headerStyles from "./Header.module.css";
-import Links from "../Links/Link.component";
 import calenderIcon from "../../Asset.component/time.svg";
 import Image from "../Image/Image.component";
 import CartIcon from "../../Asset.component/plus-cart.png";
 import Button from "../Button/Button.component";
+import NavLinks from "../NavLinks/Navlinks.component";
+import Links from "../Links/Link.component";
+import { NavbarLinksArray } from "../../Collection.component/Navbar.links.array";
+import { withRouter } from "react-router-dom";
 const Header = ({ history }) => {
   const {
     header_wrapper,
@@ -14,33 +17,43 @@ const Header = ({ history }) => {
     cart,
     user_image,
     signin_toggle
-  } = headerStyles;
-  const [userImage, setUserImage] = useState([]);
+  } = headerStyles; //destructuring of the styles modules
+  const [loggerDatas, setUserImage] = useState([]);
   const [signOut, setSignOut] = useState("logout");
-  const LoggerImg = () => {
-    const storage = JSON.parse(sessionStorage.getItem("userObject"));
+  const LoggerDAta = () => {
+    const storage = JSON.parse(sessionStorage.getItem("userObject")); //get the login users token
     if (storage) {
-      let res = storage.img;
-      setUserImage(res);
+      //check if sessionStorage is null
+      setUserImage(prev => [...prev, storage]); //setting the token to the state
     }
   };
   const handleSignOut = () => {
-    sessionStorage.removeItem("userObject");
-    window.location.replace("/");
+    //function for signing out of the dashboard
+    sessionStorage.removeItem("userObject"); //clearing the user token from the sessionstorage
+    window.location.replace("/"); //redirecting to the registere page
+  };
+  const handleClick = () => {
+    //function for products previews
+    history.push("/categories"); //routing to the categories page
   };
   useEffect(() => {
-    LoggerImg();
-  });
+    LoggerDAta();
+  }, []);
   return (
     <div className={header_wrapper}>
       <div className={header_container}>
         <div className={nav_wrapper}>
-          <Links text={"Home"} url={"/"} />
-          <Links text={"Products"} url={"/"} />
-          <Links text={"About"} url={"/"} />
-          <Links text={"Pages"} url={"/"} />
-          <Links text={"Blog"} url={"/"} />
-          <Links text={"Contact"} url={"/"} />
+          {NavbarLinksArray && // checking if navigations array exist
+            NavbarLinksArray.map((
+              navDatas,
+              i //map through the navigation arrays
+            ) => (
+              <NavLinks //rendering the array paths into the navlins
+                text={navDatas}
+                url={"/" + navDatas.toLocaleLowerCase()}
+                key={i}
+              />
+            ))}
         </div>
         <div className={calender}>
           <Image
@@ -56,16 +69,26 @@ const Header = ({ history }) => {
             alt={"cart image"}
             width={"40px"}
             height={"30px"}
+            onclick={handleClick}
           />
         </div>
         <div className={user_image}>
-          <Image
-            src={userImage}
-            alt={"logger image"}
-            width={"50px"}
-            height={"50px"}
-            padding={"5px 0 0 0"}
-          />
+          {loggerDatas.length && //check if user is login
+            loggerDatas.map((userData, i) => (
+              <Links
+                text={
+                  <Image
+                    src={userData.img}
+                    alt={"logger image"}
+                    width={"50px"}
+                    height={"50px"}
+                    padding={"5px 0 0 0"}
+                  />
+                }
+                url={"/dashboard/" + userData.username} //setting the url paths
+                key={i}
+              />
+            ))}
         </div>
         <div className={signin_toggle}>
           <Button
@@ -78,4 +101,4 @@ const Header = ({ history }) => {
     </div>
   );
 };
-export default Header;
+export default withRouter(Header);

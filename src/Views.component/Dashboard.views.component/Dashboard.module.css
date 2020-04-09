@@ -39,27 +39,7 @@
   border-bottom-left-radius: 20px;
   padding-left: 10px;
 }
-.Categories_names {
-  display: flex;
-  justify-content: flex-start;
-  padding-left: 35px;
-  height: 10vh;
-  align-items: center;
-  color: goldenrod;
-  animation: blink 3s infinite;
-  background-attachment: fixed;
-}
-@keyframes blink {
-  from {
-    color: #5a3f11;
-  }
-  to {
-    color: #fafafa;
-  }
-  30% {
-    opacity: 0.8;
-  }
-}
+
 .product_details {
   color: #fff;
 }
@@ -81,12 +61,15 @@
   height: 250px;
   border-radius: 50%;
 }
+
 .boys_sample_product {
   display: flex;
   justify-content: space-around;
   align-items: center;
   height: 55vh;
+  margin-right: 5px;
 }
+
 .ladies_sample_product {
   display: flex;
   justify-content: space-around;
@@ -98,4 +81,12 @@
   justify-content: space-around;
   align-items: center;
   height: 55vh;
+}
+.items_wrappers {
+  display: flex;
+  justify-content: space-around;
+}
+.items_b {
+  display: flex;
+  justify-content: space-around;
 }

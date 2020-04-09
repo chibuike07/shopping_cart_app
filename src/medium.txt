@@ -1,0 +1,122 @@
+easy way to restrict multiple components from unauthenticated users
+Have you ever think of preventing a component from users who are not a registered member or unsubscribe users? if yes then this will not only teach you how to protect just one component but multiple components.
+React is very beautiful and wonderful to use in building/developing an application but mobile and web view because of its great ability to enable the one-page application. It removes entirely, having multiple HTML files in your development structure. it brings you the development of an application with just one HTML file that you can route to different pages and protect to routing of some page by unsubscribed users. This brings us to today's course.
+things to must have done before now:
+install nodejs package,
+install nvm, 
+install node and npm from nvm,
+run npm init create-react-app my_app,
+cd inside of the my_app and 
+install react-router-dom from npm i - save react-router-dom.
+Inside the my_app project, we just created go to the src and create a folder named protected.component, inside it, create a file named authorized_users. Create another folder named unprotected.component inside it create a file name unauthorized_users.
+Create a new folder inside the src name view_component, inside of it create another three folders named signin_component, dashboard_component and about_us_component respectively.
+inside the sign-in folder create a new file named sign_in.jsx, inside it, do the following;
+import React from "react";
+const SignIn = () => {
+return (
+<div>
+<h2>hello welcome to the registration page</h2>
+</div>
+};
+export default SignIn;
+
+
+Inside the dashboard folder, create a new file named dashboard.js and do the following inside of it:
+import React from "react";
+const Dashboard = () => {
+return (
+<div>
+<h2>hello welcome to the dashboard page</h2>
+</div>
+};
+export default Dashboard;
+
+
+Inside the about_us_component create a new file named about_us.jsx, and add the below code inside of it:
+import React from "react";
+const AboutUs = () => {
+return (
+<div>
+<h2>hello welcome to the registration page</h2>
+</div>
+};
+export default AboutUs;
+
+
+Above we declared three functions called SignIn, Dashboard and AboutUs that are holding our UI to be displayed on each of the components.
+Here let us see a way to restrict one component from the unsubscribed users firstly before heading to restricting multiple components from the unsubscribed users.
+Going further, let us declare a function called subscribedUsers inside the authorized_users file we created above:
+Going to the protected.component folder open the authorized_users file, add the following inside of it;
+import React from 'react', 
+import {BrowserRouter, Switch, Route} from 'react-router-dom
+import Dashboard from '../view_component/dashboard/dashboard;
+const subscribedUsers = ({history}) => {
+return (
+<BrowserRouter>
+{sessionStorage.getItem("userObject") ? (//checking if the user is locked in
+<Switch>
+<Route exact path="/dashboard" component={Dashboard} />
+</Switch>
+) : (
+history.replace("/signin")
+)}
+</BrowserRouter>
+);
+};
+export default subscribedUsers;
+
+
+Here we imported react from 'react' and imported BrowserRouter which is a history API to keep the UI in sync with the URL. The Switch looks up its children (Route) and returns the Route to which its URL matches the exact current URL. The Route is the most important as far as react-router is consigned. it returns the UI of the URL that matches the current URL. we imported the dashboard and about_us components which will want to restrict the unsubscribed users from having to them. we destructured history from the subscribedUsers props property.
+Moreso, inside the subscribedUsers function, we created above, we return the BrowserRouter, inside of it we declare a condition that will check if the user has been authenticated or not. In our case when a user signs in we store the users object that login in the session storage. the condition we declared above checks if the user object has been stored in the session storage. If yes then return the Switch that holds the Route that returns the UI of the URL that matches the current URL the user added. In this case, the user will be routed to the dashboard page. If no the history will push the user to the sign-in page for the user to log in or sign up to gain access to the dashboard.
+Meanwhile, inside the app file, that is created inside the src folder, let us remove all the arguments in of the app function and add the following:
+import React from 'react'
+import {BrowserRouter, Switch, Route} from 'react-router-dom
+import SubscribedUsers from './protected.component/authorized_users'
+import SignIn from './view_component/sign in/sign_in
+function App(){
+return(
+<div className='app'>
+<BrowserRouter>
+<Switch>
+<Route exact path="/signin" component={SignIn} />
+<SubscribedUsers />
+</Switch>
+</BrowserRouter>
+</div>
+}
+export default App
+Above holds all of our routes both the ones for the subscribed users and for the unsubscribed user too. Here we imported the authorized_users component which is returning a route that is restricted from the unsubscribed users and rendered it as one of the Switch children. furthermore, when a user searches for any URL on the browser search box that matches any path in our Routes the Switch loops through it children and returns the exact path that matches the user's search. 
+let us get what exactly happens in the above App function. Once a user tries to navigate to the dashboard UI 
+/dashboard
+the Switch checks if the path above is existing, it checks the sign-in route paths, in this case, the sign-in path does not match the URL the user searched, it goes to the second child, aww! is a function, what happens next, of course, a function must return a value. So it waits for the function to run through its conditions and yes the path does exist in the function, it checks if the user has logged in, if yes it returns the Route that holds the path to the dashboard UI  and returns the value to the App function Switch to route to the dashboard. if the user is not registered, it returns the history.push('signin') as its value, the Switch also will redirect the user to the sign-in page respectively.
+Let us see how to restrict multiple components from unsubscribed users.
+Now open the authorized_users file that is inside the protected folder we created above, add the following inside of it;
+
+
+import React from 'react', 
+import {BrowserRouter, Switch, Route} from 'react-router-dom
+import Dashboard from '../view_component/dashboard/dashboard;
+import AboutUs from '../view_component/about_us_component/about_us;
+const subscribedUsers = () => {
+return (
+<BrowserRouter>
+{sessionStorage.getItem("userObject") ? (//checking if the user is locked in
+<Switch>
+<Route exact path="/about_us" component={AboutUs} />
+<Route exact path="/dashboard" component={Dashboard} />
+</Switch>
+) : (
+window.location.replace("/signin")
+)}
+</BrowserRouter>
+);
+};
+export default subscribedUsers;
+Here just a few things changed, which is the removal of the destructed history from the function parameter,
+the history.replace('/') to window.location.replace('/')
+and we imported the AboutUs component, we added another Route to the Switch children which holds the path and UI to the AboutUs page
+<Switch>
+<Route exact path="/about_us" component={AboutUs} />
+<Route exact path="/dashboard" component={Dashboard} />
+</Switch>
+Currently, we have increased our protected component from one to two and we can add more to it if necessary
