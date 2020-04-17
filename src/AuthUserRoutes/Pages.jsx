@@ -38,7 +38,7 @@ const PageForLoggedUsers = () => {
               />
               <Route path="/about" component={AboutUs} />
               <Route path="/contact" component={ContactUs} />
-              <Route path="/products/found" component={FoundProducts} />
+              <Route path="/products/:items" component={FoundProducts} />
               <Route component={Display} />
             </Switch>
           </div>

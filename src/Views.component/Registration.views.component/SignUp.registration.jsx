@@ -17,7 +17,7 @@ const SignUp = ({ history }) => {
   } = SignUpStyles;
 
   const [auth, setAuth] = useState([]); //destructuring state and set state from useState for user auth
-  const [userAuths, setUserAuth] = useState([]);
+  // const [userAuths, setUserAuth] = useState([]);
 
   ////function to get the user input value onchange
   const handleChange = ({ target }) => {
@@ -29,7 +29,7 @@ const SignUp = ({ history }) => {
 
   const handleSubmit = e => {
     e.preventDefault(); //prevent the form default form submittion
-    setUserAuth(prev => [...prev, auth]);
+    // setUserAuth(prev => [...prev, auth]);
     history.push("/login");
   };
 
@@ -64,7 +64,7 @@ const SignUp = ({ history }) => {
               onChange={handleChange}
               isRequired={true}
               id={"firstname"}
-              // value={auth.firstname}
+              value={auth.firstname}
               width={"40vw"}
               height={"40px"}
               border={"none"}
@@ -81,7 +81,7 @@ const SignUp = ({ history }) => {
               onChange={handleChange}
               isRequired={true}
               id={"lastname"}
-              // value={auth.lastname}
+              value={auth.lastname}
               width={"40vw"}
               height={"40px"}
               border={"none"}
@@ -102,7 +102,7 @@ const SignUp = ({ history }) => {
               onChange={handleChange}
               isRequired={true}
               id={"username"}
-              // value={auth.username}
+              value={auth.username}
               width={"40vw"}
               height={"40px"}
               border={"none"}
@@ -119,7 +119,7 @@ const SignUp = ({ history }) => {
               onChange={handleChange}
               isRequired={true}
               id={"email"}
-              // value={auth.email}
+              value={auth.email}
               width={"40vw"}
               height={"40px"}
               border={"none"}
@@ -136,7 +136,7 @@ const SignUp = ({ history }) => {
               onChange={handleChange}
               isRequired={true}
               id={"password"}
-              // value={auth.password}
+              value={auth.password}
               width={"40vw"}
               height={"40px"}
               border={"none"}
@@ -153,7 +153,7 @@ const SignUp = ({ history }) => {
               onChange={handleChange}
               isRequired={true}
               id={"repeat_password"}
-              // value={auth.repeat_password}
+              value={auth.repeat_password}
               width={"40vw"}
               height={"40px"}
               border={"none"}

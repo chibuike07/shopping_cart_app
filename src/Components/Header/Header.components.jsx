@@ -19,7 +19,7 @@ const Header = ({ history }) => {
     signin_toggle
   } = headerStyles; //destructuring of the styles modules
   const [loggerDatas, setUserImage] = useState([]);
-  const [signOut, setSignOut] = useState("logout");
+  // const [signOut, setSignOut] = useState("logout");
   const LoggerDAta = () => {
     const storage = JSON.parse(sessionStorage.getItem("userObject")); //get the login users token
     if (storage) {
@@ -94,7 +94,7 @@ const Header = ({ history }) => {
         <div className={signin_toggle}>
           <Button
             click={handleSignOut}
-            text={signOut}
+            text={"logout"}
             backgroundColor={"inherit"}
           />
         </div>

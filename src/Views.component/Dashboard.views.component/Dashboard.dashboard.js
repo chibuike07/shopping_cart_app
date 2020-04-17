@@ -36,28 +36,51 @@ const Dashboard = ({ history }) => {
     let res = men.products.filter(({ id }) => id === 1);
     setMenWears(res);
   };
-  const handleSearchBar = e => {
+  const handleSearchBarItemKeys = e => {
     e.preventDefault();
     const searchValue = searchInput.search_products;
     if (searchValue) {
       for (let values in Categories[searchValue]) {
         if (values) {
-          // let res = Object.values(Categories[searchValue][1]);
           sessionStorage.setItem(
             "foundProduct",
             JSON.stringify(Categories[searchValue][values])
           );
-          history.push("/products/found");
-
-          // console.log(...values);
+          history.push("/products/" + searchValue);
         } else {
           window.alert("sorry search was not found");
         }
       }
     }
   };
+  const handleSearchBarItemProductName = () => {
+    //getting the search value
+    const searchValue = searchInput.search_products;
+    let arr = []; //empty to spread the over all object into it
+    //loop through the object to get the get all the products object
+    for (let values in Categories) {
+      let value = Categories[values].products;
+      arr.push(...value); //spreading the object into an empty array
+    }
+    //filtered object the matches the found product name
+    let searchByProductName = arr.filter(v => searchValue === v.name);
+    //making sure that there have been a match
+    if (searchByProductName) {
+      //setting the production that matches the found product name to the storage
+      sessionStorage.setItem(
+        "search_by_productNames",
+        JSON.stringify(searchByProductName)
+      );
+      //routing the route that will display the found products
+      history.push("/products/" + searchValue);
+      // console.log(searchByProductName);
+    } else {
+      return alert("search not found");
+    }
+  };
 
   useEffect(() => {
+    // handleSearchBarItemProductName();
     handleGirldWears();
     handleBoysWears();
     handleLadiesWear();
@@ -77,7 +100,7 @@ const Dashboard = ({ history }) => {
             <Links url={"/"} text={"add product"} color={"blue"} />
           </div>
           <div className={styles.product_search_form}>
-            <form className={styles.form} onSubmit={handleSearchBar}>
+            <form className={styles.form} onSubmit={handleSearchBarItemKeys}>
               <Input
                 type={"search"}
                 name={"search_products"}
@@ -87,7 +110,11 @@ const Dashboard = ({ history }) => {
                 value={searchInput.search_products}
                 onChange={handleChange}
               />
-              <Button text={"search"} backgroundColor={"#9c5518"} />
+              <Button
+                text={"search"}
+                backgroundColor={"#9c5518"}
+                click={handleSearchBarItemProductName}
+              />
             </form>
           </div>
 
