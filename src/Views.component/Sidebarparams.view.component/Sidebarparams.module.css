@@ -1,0 +1,10 @@
+.container {
+  width: 100%;
+}
+.sidebar {
+  width: 20px;
+}
+
+.displayed {
+  width: 40%;
+}

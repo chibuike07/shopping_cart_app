@@ -12,14 +12,8 @@
 }
 .dashboard_container {
   width: inherit;
-  display: flex;
-  background-color: #faf4f4;
 }
-.aside_container {
-  width: 80%;
-  background-color: #faf4f4;
-  height: inherit;
-}
+
 .top_area {
   height: 50px;
   display: flex;

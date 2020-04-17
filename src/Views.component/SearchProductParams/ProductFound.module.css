@@ -1,0 +1,8 @@
+.display {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.items {
+  margin-right: 10px;
+}

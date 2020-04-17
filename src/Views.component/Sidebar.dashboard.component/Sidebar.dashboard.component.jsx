@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import SidebarStyles from "./Sidebar.module.css";
-import { optionArray } from "../../../Collection.component/Side_bar_options_array";
-import Lists from "../../../Components/Lists/List.component";
-import Links from "../../../Components/Links/Link.component";
-import Image from "../../../Components/Image/Image.component";
+import { optionArray } from "../../Collection.component/Side_bar_options_array";
+import Lists from "../../Components/Lists/List.component";
+import Links from "../../Components/Links/Link.component";
+import Image from "../../Components/Image/Image.component";
 
 //function for the side bar
-const SideBar = ({ loginUser }, data) => {
+const SideBar = () => {
   //destructuring props
   const {
     // destructuring styles
@@ -19,35 +19,33 @@ const SideBar = ({ loginUser }, data) => {
     list
   } = SidebarStyles;
   const [options, setOptions] = useState([]); //destructuring state and set state from useState for side bar options
-  const [loginUserdata, setLoginUserData] = useState([]);
+  const [loginUser, setLoginUserData] = useState([]);
 
   //function to handle the side bar options
   const handleOptions = () => {
     setOptions(optionArray);
   };
   // function to handle the login user data
-  const logger = () => {
-    setLoginUserData(loginUser);
+  const handleLoginUser = () => {
+    const storage = JSON.parse(sessionStorage.getItem("userObject"));
+    setLoginUserData([storage]);
   };
-
   useEffect(() => {
     //setting the components to load the options array to the side bar and fetch the user data from the session storage on componentdidmount
     handleOptions();
-    logger();
-  });
-  const handleOptionClick = ({ target }) => {
-    console.log(target.text);
-  };
+    handleLoginUser();
+  }, []);
+
   return (
     <div className={option}>
       <div className={option_container}>
         <div className={image}>
-          {loginUserdata.map(({ img }, i) => (
+          {loginUser.map(({ img }, i) => (
             <Image src={img} alt={"user image"} key={i} />
           ))}
         </div>
         <div className={user_identity}>
-          {loginUserdata.map(({ username, email }, index) => (
+          {loginUser.map(({ username, email }, index) => (
             <div key={index} style={{ color: "#fff" }}>
               <p>{username[0].toUpperCase() + username.slice(1)}</p>
               <br />
@@ -64,10 +62,9 @@ const SideBar = ({ loginUser }, data) => {
                 key={index}
                 text={
                   <Links
-                    url={"/dashboard"}
+                    url={`/dashboard/sidebars/${option}`}
                     text={option}
                     textTransform={"capitalize"}
-                    click={handleOptionClick}
                   />
                 }
                 marginTop={"13px"}

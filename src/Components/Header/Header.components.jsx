@@ -50,8 +50,9 @@ const Header = ({ history }) => {
             ) => (
               <NavLinks //rendering the array paths into the navlins
                 text={navDatas}
-                url={"/" + navDatas.toLocaleLowerCase()}
+                url={`/${navDatas.toLocaleLowerCase()}`}
                 key={i}
+                textTransform={"capitalize"}
               />
             ))}
         </div>

@@ -1,9 +1,10 @@
 .option {
-  width: 20%;
-  max-height: 100vh;
+  width: 250px;
+  height: 50vh;
+  background-position: fixed;
 }
 .option_container {
-  height: 100vh;
+  height: 86.5vh;
   display: flex;
   flex-direction: column;
   align-items: center;
