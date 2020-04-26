@@ -37,14 +37,14 @@ export const Categories = {
       },
       {
         id: 2,
-        name: "hills-shoes",
+        name: "hills shoes",
         amount: "$" + 3000,
         image:
           "https://res.cloudinary.com/hobbyluv07/image/upload/v1568416986/81V4ktn_z_L._Ac_SX255__hxdsxt.jpg"
       },
       {
         id: 3,
-        name: "hills-shoes",
+        name: "hills shoes",
         amount: "$" + 3000,
         image:
           "https://res.cloudinary.com/hobbyluv07/image/upload/v1568416986/81V4ktn_z_L._Ac_SX255__hxdsxt.jpg"
@@ -56,21 +56,21 @@ export const Categories = {
     products: [
       {
         id: 1,
-        name: "flat-cruros",
+        name: "flat cruros",
         amount: "$" + 2000,
         image:
           "https://res.cloudinary.com/hobbyluv07/image/upload/v1568417052/Mens_Boat_Shoes._CB442712240__c9bu6u.jpg"
       },
       {
         id: 2,
-        name: "flat-cruros",
+        name: "flat cruros",
         amount: "$" + 2000,
         image:
           "https://res.cloudinary.com/hobbyluv07/image/upload/v1568417052/Mens_Boat_Shoes._CB442712240__c9bu6u.jpg"
       },
       {
         id: 3,
-        name: "flat-cruros",
+        name: "flat cruros",
         amount: "$" + 2000,
         image:
           "https://res.cloudinary.com/hobbyluv07/image/upload/v1568417052/Mens_Boat_Shoes._CB442712240__c9bu6u.jpg"
@@ -82,21 +82,21 @@ export const Categories = {
     products: [
       {
         id: 1,
-        name: "hills-shoes",
+        name: "hills shoes",
         amount: "$" + 3000,
         image:
           "https://res.cloudinary.com/hobbyluv07/image/upload/v1568416986/81V4ktn_z_L._Ac_SX255__hxdsxt.jpg"
       },
       {
         id: 2,
-        name: "hills-shoes",
+        name: "hills shoes",
         amount: "$" + 3000,
         image:
           "https://res.cloudinary.com/hobbyluv07/image/upload/v1568416986/81V4ktn_z_L._Ac_SX255__hxdsxt.jpg"
       },
       {
         id: 3,
-        name: "hills-shoes",
+        name: "hills shoes",
         amount: "$" + 3000,
         image:
           "https://res.cloudinary.com/hobbyluv07/image/upload/v1568416986/81V4ktn_z_L._Ac_SX255__hxdsxt.jpg"

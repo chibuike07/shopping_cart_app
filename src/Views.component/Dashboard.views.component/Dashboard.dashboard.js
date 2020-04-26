@@ -7,12 +7,13 @@ import { Categories } from "../../Collection.component/Categories.carts";
 import Image from "../../Components/Image/Image.component";
 import WeekDay from "../../Components/Week_day/Week_day";
 
-const Dashboard = ({ history }) => {
+const Dashboard = ({ history, match }) => {
   const [girls_wears, setGirlsWears] = useState([]);
   const [boys_wears, setBoysWears] = useState([]);
   const [ladies_wears, setLadiesWears] = useState([]);
   const [men_wears, setMenWears] = useState([]);
   const [searchInput, setInput] = useState([]);
+
   const handleChange = ({ target }) => {
     setInput({ [target.name]: target.value });
   };
@@ -21,9 +22,11 @@ const Dashboard = ({ history }) => {
     let res = girls.products.filter(({ id }) => id === 1);
     setGirlsWears(res);
   };
+
   const handleBoysWears = () => {
     const { boys } = Categories;
     let res = boys.products.filter(({ id }) => id <= 2);
+
     return setBoysWears(res);
   };
   const handleLadiesWear = () => {
@@ -40,6 +43,7 @@ const Dashboard = ({ history }) => {
     e.preventDefault();
     const searchValue = searchInput.search_products;
     if (searchValue) {
+      console.log(Categories[searchValue]);
       for (let values in Categories[searchValue]) {
         if (values) {
           sessionStorage.setItem(
@@ -79,6 +83,11 @@ const Dashboard = ({ history }) => {
     }
   };
 
+  const handleGirlsWearClick = ({ name }) => {
+    history.push("/categories/" + name);
+    console.log(match);
+    alert("clicked");
+  };
   useEffect(() => {
     // handleSearchBarItemProductName();
     handleGirldWears();
@@ -113,7 +122,7 @@ const Dashboard = ({ history }) => {
               <Button
                 text={"search"}
                 backgroundColor={"#9c5518"}
-                click={handleSearchBarItemProductName}
+                // click={handleSearchBarItemProductName}
               />
             </form>
           </div>
@@ -134,6 +143,7 @@ const Dashboard = ({ history }) => {
                       src={image}
                       alt={image}
                       className={styles.custom_image}
+                      onclick={() => handleGirlsWearClick({ name })}
                     />
                     <span className={styles.product_details}>{amount}</span>
                     <br />
@@ -152,6 +162,7 @@ const Dashboard = ({ history }) => {
                       src={image}
                       alt={image}
                       className={styles.custom_image}
+                      onclick={() => handleGirlsWearClick({ name })}
                     />
                     <span className={styles.product_details}>{amount}</span>
                     <br />
@@ -172,6 +183,7 @@ const Dashboard = ({ history }) => {
                       src={image}
                       alt={image}
                       className={styles.custom_image}
+                      onclick={() => handleGirlsWearClick({ name })}
                     />
                     <span className={styles.product_details}>{amount}</span>
                     <br />
@@ -191,6 +203,7 @@ const Dashboard = ({ history }) => {
                       src={image}
                       alt={image}
                       className={styles.custom_image}
+                      onclick={() => handleGirlsWearClick({ name })}
                     />
                     <span className={styles.product_details}>{amount}</span>
                     <br />

@@ -8,14 +8,16 @@ class FoundProducts extends React.Component {
     wantedProduct: [],
     foundBySearch: []
   };
-  Found = () => {
+  Found = async () => {
     let searchParams = this.props.match.params.items;
     let keys = Object.keys(Categories);
-    console.log(keys);
     if (searchParams) {
       if (keys.includes(searchParams)) {
         // console.log(true);
-        const foundProduct = JSON.parse(sessionStorage.getItem("foundProduct"));
+        const foundProduct = await JSON.parse(
+          sessionStorage.getItem("foundProduct")
+        );
+        console.log(foundProduct);
 
         let items = foundProduct.filter(searchItems => {
           return searchItems.id < 11;
@@ -102,7 +104,7 @@ class FoundProducts extends React.Component {
           {/* making sure that the state is in async with the datas before looping */}
           {this.state.foundBySearch && this.state.foundBySearch ? (
             // destructured products properties
-            this.state.foundBySearch.map(({ name, amount, image, id }, i) => (
+            this.state.foundBySearch.map(({ name, amount, image }, i) => (
               <div key={i}>
                 <Image src={image} alt={image} />
                 <div>{name}</div>

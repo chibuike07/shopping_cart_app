@@ -9,6 +9,7 @@ import ContactUs from "../Views.component/Contact_us.view.component/Contact_us";
 import SidebarParams from "../Views.component/Sidebarparams.view.component/Sidebarparams";
 import SideBar from "../Views.component/Sidebar.dashboard.component/Sidebar.dashboard.component";
 import FoundProducts from "../Views.component/SearchProductParams/Found_products";
+import SpecifiedItem from "../Views.component/Specified-product.views.component/display.wanted.specified";
 const Display = () => <p>this page does not exist</p>;
 const PageForLoggedUsers = () => {
   return (
@@ -30,6 +31,7 @@ const PageForLoggedUsers = () => {
             <Switch>
               <Route exact path="/dashboard" component={Dashboard} />
               <Route exact path="/categories" component={ProductDisplay} />
+              <Route path="/categories/:product" component={SpecifiedItem} />
               <Route exact path="/dashboard/:profile" component={Profile} />
               <Route
                 exact
