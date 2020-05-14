@@ -17,27 +17,26 @@ const Dashboard = ({ history, match }) => {
   const handleChange = ({ target }) => {
     setInput({ [target.name]: target.value });
   };
+
   const handleGirldWears = () => {
     const { girls } = Categories;
-    let res = girls.products.filter(({ id }) => id === 1);
-    setGirlsWears(res);
+    setGirlsWears(() => [...girls_wears, girls]);
   };
 
   const handleBoysWears = () => {
     const { boys } = Categories;
-    let res = boys.products.filter(({ id }) => id <= 2);
-
-    return setBoysWears(res);
+    setBoysWears(() => [...boys_wears, boys]);
   };
+
   const handleLadiesWear = () => {
     const { ladies } = Categories;
-    let res = ladies.products.filter(({ id }) => id === 1);
-    setLadiesWears(res);
+    // let res = ladies.products.filter(({ id }) => id === 1);
+    setLadiesWears(() => [...ladies_wears, ladies]);
   };
   const handleMensWear = () => {
     const { men } = Categories;
-    let res = men.products.filter(({ id }) => id === 1);
-    setMenWears(res);
+    // let res = men.products.filter(({ id }) => id === 1);
+    setMenWears(() => [...men_wears, men]);
   };
   const handleSearchBarItemKeys = e => {
     e.preventDefault();
@@ -83,11 +82,12 @@ const Dashboard = ({ history, match }) => {
     }
   };
 
-  const handleGirlsWearClick = ({ name }) => {
-    history.push("/categories/" + name);
-    console.log(match);
+  const handleGirlsWearClick = ({ id, name }) => {
+    history.push("/categories/" + `${id} ${name}`);
     alert("clicked");
+    match.params.product = `${id} ${name}`;
   };
+  console.log(match);
   useEffect(() => {
     // handleSearchBarItemProductName();
     handleGirldWears();
@@ -95,6 +95,7 @@ const Dashboard = ({ history, match }) => {
     handleLadiesWear();
     handleMensWear();
   }, []);
+
   return (
     <div className={styles.dashboard}>
       <div className={styles.dashboard_container}>
@@ -136,39 +137,47 @@ const Dashboard = ({ history, match }) => {
         <div className={styles.items_wrappers}>
           <div className={styles.girls}>
             <div className={styles.girl_sample_product}>
-              {girls_wears.map(({ image, id, amount, name }) => {
-                return (
-                  <div className={styles.show_case_wrapper} key={id}>
-                    <Image
-                      src={image}
-                      alt={image}
-                      className={styles.custom_image}
-                      onclick={() => handleGirlsWearClick({ name })}
-                    />
-                    <span className={styles.product_details}>{amount}</span>
-                    <br />
-                    <span className={styles.product_details}>{name}</span>
-                  </div>
-                );
+              {girls_wears.map(({ id, products }) => {
+                return products
+                  .filter(({ id }) => id === 1)
+                  .map(({ name, amount, image }, i) => {
+                    return (
+                      <div className={styles.show_case_wrapper} key={i}>
+                        <Image
+                          src={image}
+                          alt={image}
+                          className={styles.custom_image}
+                          onclick={() => handleGirlsWearClick({ id, name })}
+                        />
+                        <span className={styles.product_details}>{amount}</span>
+                        <br />
+                        <span className={styles.product_details}>{name}</span>
+                      </div>
+                    );
+                  });
               })}
             </div>
           </div>
           <div className={styles.boys}>
             <div className={styles.boys_sample_product}>
-              {boys_wears.map(({ image, id, amount, name }) => {
-                return (
-                  <div className={styles.show_case_wrapper} key={id}>
-                    <Image
-                      src={image}
-                      alt={image}
-                      className={styles.custom_image}
-                      onclick={() => handleGirlsWearClick({ name })}
-                    />
-                    <span className={styles.product_details}>{amount}</span>
-                    <br />
-                    <span className={styles.product_details}>{name}</span>
-                  </div>
-                );
+              {boys_wears.map(({ id, products }) => {
+                return products
+                  .filter(({ id }) => id <= 2)
+                  .map(({ name, amount, image }, i) => {
+                    return (
+                      <div className={styles.show_case_wrapper} key={i}>
+                        <Image
+                          src={image}
+                          alt={image}
+                          className={styles.custom_image}
+                          onclick={() => handleGirlsWearClick({ id, name })}
+                        />
+                        <span className={styles.product_details}>{amount}</span>
+                        <br />
+                        <span className={styles.product_details}>{name}</span>
+                      </div>
+                    );
+                  });
               })}
             </div>
           </div>
@@ -176,40 +185,48 @@ const Dashboard = ({ history, match }) => {
         <div className={styles.items_b}>
           <div className={styles.ladies}>
             <div className={styles.ladies_sample_product}>
-              {ladies_wears.map(({ image, id, amount, name }) => {
-                return (
-                  <div className={styles.show_case_wrapper} key={id}>
-                    <Image
-                      src={image}
-                      alt={image}
-                      className={styles.custom_image}
-                      onclick={() => handleGirlsWearClick({ name })}
-                    />
-                    <span className={styles.product_details}>{amount}</span>
-                    <br />
-                    <span className={styles.product_details}>{name}</span>
-                  </div>
-                );
+              {ladies_wears.map(({ id, products }) => {
+                return products
+                  .filter(({ id }) => id === 1)
+                  .map(({ name, amount, image }, i) => {
+                    return (
+                      <div className={styles.show_case_wrapper} key={i}>
+                        <Image
+                          src={image}
+                          alt={image}
+                          className={styles.custom_image}
+                          onclick={() => handleGirlsWearClick({ id, name })}
+                        />
+                        <span className={styles.product_details}>{amount}</span>
+                        <br />
+                        <span className={styles.product_details}>{name}</span>
+                      </div>
+                    );
+                  });
               })}
             </div>
           </div>
 
           <div className={styles.men}>
             <div className={styles.men_sample_product}>
-              {men_wears.map(({ image, id, amount, name }) => {
-                return (
-                  <div className={styles.show_case_wrapper} key={id}>
-                    <Image
-                      src={image}
-                      alt={image}
-                      className={styles.custom_image}
-                      onclick={() => handleGirlsWearClick({ name })}
-                    />
-                    <span className={styles.product_details}>{amount}</span>
-                    <br />
-                    <span className={styles.product_details}>{name}</span>
-                  </div>
-                );
+              {men_wears.map(({ id, products }) => {
+                return products
+                  .filter(({ id }) => id === 1)
+                  .map(({ name, amount, image }, i) => {
+                    return (
+                      <div className={styles.show_case_wrapper} key={i}>
+                        <Image
+                          src={image}
+                          alt={image}
+                          className={styles.custom_image}
+                          onclick={() => handleGirlsWearClick({ id, name })}
+                        />
+                        <span className={styles.product_details}>{amount}</span>
+                        <br />
+                        <span className={styles.product_details}>{name}</span>
+                      </div>
+                    );
+                  });
               })}
             </div>
           </div>
@@ -219,5 +236,4 @@ const Dashboard = ({ history, match }) => {
     </div>
   );
 };
-
 export default Dashboard;

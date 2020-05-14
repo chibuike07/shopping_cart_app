@@ -7,31 +7,23 @@ import SettingPage from "../Sidebar.dashboard.component/Sidebar_list_components/
 const SidebarParams = ({ match }) => {
   const [sideBars, setSideBars] = useState(null);
 
-  const SideBarDisplay = () => {
-    let sideBarparams = match.params.sidebars;
-    switch (sideBarparams) {
-      case "upgrade":
-        setSideBars("sorry no upgrade yet");
-        break;
-      case "followers":
-        setSideBars(<FollowersPage />);
-        break;
-      case "following":
-        setSideBars(<FollowingPage />);
-        break;
-      case "analysis":
-        setSideBars(<Analysispage />);
-        break;
-      case "setting":
-        setSideBars(<SettingPage />);
-        break;
-    }
-  };
-
   useEffect(() => {
-    return () => {
-      SideBarDisplay();
+    const SideBarDisplay = () => {
+      let sideBarparams = match.params.sidebars;
+      if (sideBarparams === "upgrade") {
+        setSideBars("sorry no upgrade yet");
+      } else if (sideBarparams === "followers") {
+        setSideBars(<FollowersPage />);
+      } else if (sideBarparams === "following") {
+        setSideBars(<FollowingPage />);
+      } else if (sideBarparams === "analysis") {
+        setSideBars(<Analysispage />);
+      } else if (sideBarparams === "setting") {
+        setSideBars(<SettingPage />);
+      }
     };
+
+    SideBarDisplay();
   }, [match]);
   return (
     <div>
